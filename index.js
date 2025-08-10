@@ -1,11 +1,9 @@
-import express from "express"
-
-const app = express()
-
-const PORT = process.env.PORT || 3000
-
-app.get("/", (req, res) => {
-    res.send("Hello World!")
-})
-
-app.listen(PORT, "127.0.0.1", () => console.log("listening", PORT));
+import http from "http"
+var server = http.createServer(function (req, res) {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    var message = 'It works!\n',
+        version = 'NodeJS ' + process.versions.node + '\n',
+        response = [message, version].join('\n');
+    res.end(response);
+});
+server.listen();
